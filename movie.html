@@ -8,13 +8,22 @@
 
     <title></title>
     <script type="text/javascript">
-        setTimeout(() => {
-            const loadingDiv = document.getElementById("loading-div");
-            const videoDiv = document.getElementById("video-div");
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                const loadingDiv = document.getElementById("loading-div");
+                const videoDiv = document.getElementById("video-div");
 
-            loadingDiv.style.display = "none";
-            videoDiv.style.display = "block";
-        }, 1000 * 10);
+                loadingDiv.style.display = "none";
+                videoDiv.style.display = "block";
+            }, 1000 * 10);
+
+            const videoElement = document.getElementById("video-element");
+            const paramItem = new URL(window.location.href).searchParams.get("item");
+            if (paramItem) {
+                videoElement.src = paramItem + ".mp4";
+                videoElement.load();
+            }
+        });
     </script>
     <style>
         body {
@@ -118,7 +127,7 @@
         <div class="loading" id="loading-div">
         </div>
         <div class="video" id="video-div">
-            <video id="video-element" src="MOVIE.mp4" autoplay muted playsinline controls></video>
+            <video id="video-element" preload="auto" playsinline controls></video>
         </div>
     </div>
 </body>
