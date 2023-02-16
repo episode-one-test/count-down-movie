@@ -23,6 +23,9 @@
                 videoElement.src = paramItem + ".mp4";
                 videoElement.load();
             }
+
+            const bodyElement = document.getElementsByTagName("body")[0];
+            bodyElement.oncontextmenu = () => {return false;};
         });
     </script>
     <style>
@@ -127,7 +130,7 @@
         <div class="loading" id="loading-div">
         </div>
         <div class="video" id="video-div">
-            <video id="video-element" preload="auto" playsinline controls></video>
+            <video id="video-element" preload="auto" playsinline controls controlsList="nodownload"></video>
         </div>
     </div>
 </body>
